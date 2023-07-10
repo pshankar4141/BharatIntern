@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Temperature Convertor</title>
+    <style>
+        body {
+            background-image: url("https://media.istockphoto.com/id/1323823418/photo/low-angle-view-thermometer-on-blue-sky-with-sun-shining.webp?b=1&s=170667a&w=0&k=20&c=fv4bbdGSWirsCUy06Qo3chENIEB8FN5-Z3iiw0UdL_c=");
+            background-repeat: no-repeat;
+            background-size: cover;
+            position: relative;
+        }
+
+        div {
+            background-image: linear-gradient(to right, gold, rgb(46, 175, 225));
+            width: 30%;
+            height: 180px;
+            position: absolute;
+            left: 35%;
+            top: 150px;
+            font-size: 15px;
+            border-radius: 10px;
+            box-shadow: inset 0px 0px 10px rgb(36, 35, 35);
+            padding: 20px;
+            font-weight: bolder;
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+        }
+
+        #btn {
+            width: 90%;
+            margin: 20px;
+            height: 40px;
+            color: white;
+            background-color: red;
+            border: none;
+            border-radius: 10px;
+            font-size: 20px;
+        }
+       
+        select {
+            font-size: 15px;
+        }
+        input {
+            outline: none;
+            border: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        Degree: <input type="number" id="input" autofocus>
+        Type: <select>
+            <option id="farenhite">Farenhite</option>
+            <option id="celcius">Celcius</option>
+            <option id="kelvin">Kelvin</option>
+        </select><br/><br/>
+        Result: <input type="number" id="output" readonly><br/>
+        <button id="btn">Convert</button>
+    </div>
+
+    <script>
+        const input = document.querySelector('#input');
+        const celcius = document.querySelector('#celcius');
+        const farenhite = document.querySelector('#farenhite');
+        const kelvin = document.querySelector('#kelvin');
+        const output = document.querySelector('#output');
+        const btn = document.querySelector('#btn');
+
+        btn.addEventListener('click', () => {
+            let inputVal = Number(input.value);
+            let celciusVal = (inputVal * 9 / 5) + 32;
+            let farenhiteVal = inputVal * 1.8 + 32;
+            let kelvinVal = inputVal + 273.15;
+
+            if (celcius.selected) {
+                output.value = celciusVal;
+            } else if (farenhite.selected) {
+                output.value = farenhiteVal;
+            } else if (kelvin.selected) {
+                output.value = kelvinVal;
+            }
+        });
+     </script>
+</body>
+
+</html>
